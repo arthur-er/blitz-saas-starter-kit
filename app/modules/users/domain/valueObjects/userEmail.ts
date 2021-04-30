@@ -6,7 +6,7 @@ export type EmailValue = z.infer<typeof emailSchema>
 
 export class Email {
   constructor(public value: EmailValue) {
-    emailSchema.parse(value)
+    emailSchema.parse(value.toLowerCase().trim())
     Object.freeze(this)
   }
 }
