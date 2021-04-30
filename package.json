@@ -2,6 +2,7 @@
   "name": "cogs",
   "version": "1.0.0",
   "scripts": {
+    "predev": "docker-compose up -d",
     "dev": "blitz dev",
     "build": "blitz build",
     "start": "blitz start",
