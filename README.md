@@ -1,173 +1,110 @@
-[![Blitz.js](https://raw.githubusercontent.com/blitz-js/art/master/github-cover-photo.png)](https://blitzjs.com)
+<h1 align="center">
+  Blitz SaaS Starter Kit
+</h1>
 
-This is a [Blitz.js](https://github.com/blitz-js/blitz) app.
+<p align="center">
+ <a href="#introduction">Introduction</a> •
+ <a href="#features">Features</a> •
+ <a href="#running-the-project">How to run it</a> •
+ <a href="#author">Author</a> •
+ <a href="#user-content-license">License</a>
+</p>
 
-# **cogs**
+## 📖 Introduction
 
-## Getting Started
+This is a Software as a Service starter kit. Made with [Blitz](https://github.com/blitz-js/blitz). Inspired by [Wave](https://github.com/thedevdojo/wave) and [BulletTrain](bullettrain.co). Designed using DDD as described [here](https://zenn.dev/repomn/articles/2ecaebd9ef6bfa).
 
-Run your app in the development mode.
+---
 
-```
-blitz dev
-```
+## 📦 Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [x] Authentication and Authorization
+- [x] Multi-tenancy
+- [ ] Subscriptions
+- [ ] Subscription plans
+- [x] User Roles
+- [ ] Notifications
+  - [ ] Email
+  - [ ] Discord
+  - [ ] Browser / in-app
+- [ ] Admin Panel
+- [ ] Announcements
+- [ ] Webhook calling on data events
+- [ ] Extended generators using [Plop](https://plopjs.com) (probably will be changed to Blitz templates when it comes out)
 
-## Environment Variables
+---
 
-Ensure the `.env.local` file has required environment variables:
+## Running the project
 
-```
-DATABASE_URL=postgresql://<YOUR_DB_USERNAME>@localhost:5432/cogs
-```
+### Pre-requisites
 
-Ensure the `.env.test.local` file has required environment variables:
+Before you begin, you will need to have the following tools installed on your machine:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), [Yarn](https://yarnpkg.com/), [Docker](https://www.docker.com) and [Docker Compose](https://docs.docker.com/compose/)
 
-```
-DATABASE_URL=postgresql://<YOUR_DB_USERNAME>@localhost:5432/cogs_test
-```
+### Installatio
 
-## Tests
+First you will need to clone the repository:
 
-Runs your tests using Jest.
-
-```
-yarn test
-```
-
-Blitz comes with a test setup using [Jest](https://jestjs.io/) and [react-testing-library](https://testing-library.com/).
-
-## Commands
-
-Blitz comes with a powerful CLI that is designed to make development easy and fast. You can install it with `npm i -g blitz`
-
-```
-  blitz [COMMAND]
-
-  dev       Start a development server
-  build     Create a production build
-  start     Start a production server
-  export    Export your Blitz app as a static application
-  prisma    Run prisma commands
-  generate  Generate new files for your Blitz project
-  console   Run the Blitz console REPL
-  install   Install a recipe
-  help      Display help for blitz
-  test      Run project tests
+```bash
+$ git clone https://github.com/arthur-er/blitz-sass.git project_name
 ```
 
-You can read more about it on the [CLI Overview](https://blitzjs.com/docs/cli-overview) documentation.
+Then follow these 3 steps:
 
-## What's included?
+#### **1. Copy the `.env.example` file**
 
-Here is the starting structure of your app.
+Duplicate the file and rename it to .env.local, then replace the DATABASE_URL, POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB with the correct data for your project
 
-```
-cogs
-├── app/
-│   ├── api/
-│   ├── auth/
-│   │   ├── components/
-│   │   │   ├── LoginForm.tsx
-│   │   │   └── SignupForm.tsx
-│   │   ├── mutations/
-│   │   │   ├── changePassword.ts
-│   │   │   ├── forgotPassword.test.ts
-│   │   │   ├── forgotPassword.ts
-│   │   │   ├── login.ts
-│   │   │   ├── logout.ts
-│   │   │   ├── resetPassword.test.ts
-│   │   │   ├── resetPassword.ts
-│   │   │   └── signup.ts
-│   │   ├── pages/
-│   │   │   ├── forgot-password.tsx
-│   │   │   ├── login.tsx
-│   │   │   ├── reset-password.tsx
-│   │   │   └── signup.tsx
-│   │   └── validations.ts
-│   ├── core/
-│   │   ├── components/
-│   │   │   ├── Form.tsx
-│   │   │   └── LabeledTextField.tsx
-│   │   ├── hooks/
-│   │   │   └── useCurrentUser.ts
-│   │   └── layouts/
-│   │       └── Layout.tsx
-│   ├── pages/
-│   │   ├── 404.tsx
-│   │   ├── _app.tsx
-│   │   ├── _document.tsx
-│   │   ├── index.test.tsx
-│   │   └── index.tsx
-│   └── users/
-│       └── queries/
-│           └── getCurrentUser.ts
-├── db/
-│   ├── index.ts
-│   ├── schema.prisma
-│   └── seeds.ts
-├── integrations/
-├── mailers/
-│   └── forgotPasswordMailer.ts
-├── public/
-│   ├── favicon.ico*
-│   └── logo.png
-├── test/
-│   ├── setup.ts
-│   └── utils.tsx
-├── README.md
-├── babel.config.js
-├── blitz.config.js
-├── jest.config.js
-├── package.json
-├── tsconfig.json
-├── types.d.ts
-├── types.ts
-└── yarn.lock
+#### **2. Install the dependencies**
+
+Simply run
+
+```bash
+$ yarn
 ```
 
-These files are:
+#### **2. Run the migrations and seeds**
 
-- The `app/` folder is a container for most of your project. This is where you’ll put any pages or API routes.
+Simply run
 
-- `db/` is where your database configuration goes. If you’re writing models or checking migrations, this is where to go.
+```bash
+$ yarn blitz prisma migrate dev
+$ yarn blitz db seed
+```
 
-- `public/` is a folder where you will put any static assets. If you have images, files, or videos which you want to use in your app, this is where to put them.
+#### **3. Start the dev server**
 
-- `integrations/` is a folder to put all third-party integrations like with Stripe, Sentry, etc.
+Simply run
 
-- `test/` is a folder where you can put test utilities and integration tests.
+```bash
+$ yarn dev
+```
 
-- `package.json` contains information about your dependencies and devDependencies. If you’re using a tool like `npm` or `yarn`, you won’t have to worry about this much.
+🎉 And that's it! You will now be able to visit your app at http://localhost:3000 and see your application up and running.
 
-- `tsconfig.json` is our recommended setup for TypeScript.
+---
 
-- `.babelrc.js`, `.env`, etc. ("dotfiles") are configuration files for various bits of JavaScript tooling.
+## Tech Stack
 
-- `blitz.config.js` is for advanced custom configuration of Blitz. It extends [`next.config.js`](https://nextjs.org/docs/api-reference/next.config.js/introduction).
+The following tools were used in the construction of the project:
 
-- `jest.config.js` contains config for Jest tests. You can [customize it if needed](https://jestjs.io/docs/en/configuration).
+- **[blitz](https://github.com/blitz-js/blitz)**
 
-You can read more about it in the [File Structure](https://blitzjs.com/docs/file-structure) section of the documentation.
+---
 
-### Tools included
+## Author
 
-Blitz comes with a set of tools that corrects and formats your code, facilitating its future maintenance. You can modify their options and even uninstall them.
+<a href="https://github.com/arthur-er">
+  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/47113350?v=4" width="100px;" alt="Arthur Emanuel"/>
+  <br />
+  <b>Arthur Emanuel</b>
+</a>
+ <br />
 
-- **ESLint**: It lints your code: searches for bad practices and tell you about it. You can customize it via the `.eslintrc.js`, and you can install (or even write) plugins to have it the way you like it. It already comes with the [`blitz`](https://github.com/blitz-js/blitz/tree/canary/packages/eslint-config) config, but you can remove it safely. [Learn More](https://eslint.org).
-- **Husky**: It adds [githooks](https://git-scm.com/docs/githooks), little pieces of code that get executed when certain Git events are triggerd. For example, `pre-commit` is triggered just before a commit is created. You can see the current hooks inside `.husky/`. If are having problems commiting and pushing, check out ther [troubleshooting](https://typicode.github.io/husky/#/?id=troubleshoot) guide. [Learn More](https://typicode.github.io/husky).
-- **Prettier**: It formats your code to look the same everywhere. You can configure it via the `.prettierrc` file. The `.prettierignore` contains the files that should be ignored by Prettier; useful when you have large files or when you want to keep a custom formatting. [Learn More](https://prettier.io).
+---
 
-## Learn more
+## License
 
-Read the [Blitz.js Documentation](https://blitzjs.com/docs/getting-started) to learn more.
+This project is under the license [MIT](./LICENSE).
 
-The Blitz community is warm, safe, diverse, inclusive, and fun! Feel free to reach out to us in any of our communication channels.
-
-- [Website](https://blitzjs.com/)
-- [Discord](https://discord.blitzjs.com/)
-- [Report an issue](https://github.com/blitz-js/blitz/issues/new/choose)
-- [Forum discussions](https://github.com/blitz-js/blitz/discussions)
-- [How to Contribute](https://blitzjs.com/docs/contributing)
-- [Sponsor or donate](https://github.com/blitz-js/blitz#sponsors-and-donations)
+Made with ❤ by Arthur Emanuel 👋🏽 [Get in Touch!](mailto:arthur-er@pm.me)
