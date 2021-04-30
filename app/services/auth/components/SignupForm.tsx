@@ -1,8 +1,8 @@
 import { useMutation } from "blitz"
 import { LabeledTextField } from "app/core/components/LabeledTextField"
 import { Form, FORM_ERROR } from "app/core/components/Form"
-import signup from "app/modules/auth/mutations/signup"
-import { Signup } from "app/modules/auth/validations"
+import signup from "app/services/auth/mutations/signup"
+import { Signup } from "app/services/auth/validations"
 
 type SignupFormProps = {
   onSuccess?: () => void

@@ -2,7 +2,7 @@ import { Suspense } from "react"
 import { Link, BlitzPage, useMutation, Routes } from "blitz"
 import Layout from "app/core/layouts/Layout"
 import { useCurrentUser } from "app/modules/users/hooks/useCurrentUser"
-import logout from "app/modules/auth/mutations/logout"
+import logout from "app/services/auth/mutations/logout"
 
 /*
  * This file is just for a pleasant getting started page for your new app.
