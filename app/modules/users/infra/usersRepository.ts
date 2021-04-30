@@ -100,4 +100,20 @@ export const usersRepository = {
 
     return userEntity
   },
+
+  async updateUser(userId: Id, values: Partial<Omit<User, "hashedPassword">>) {
+    const updatedUser = await db.user.update({ where: { id: userId.value }, data: values })
+
+    return updatedUser
+  },
+
+  async updateUserPassword(userId: Id, newPassword: string) {
+    const updatedUser = await db.user.update({
+      where: { id: userId.value },
+      data: {
+        hashedPassword: await SecurePassword.hash(newPassword.trim()),
+      },
+    })
+    return updatedUser
+  },
 }
