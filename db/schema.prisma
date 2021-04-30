@@ -61,6 +61,15 @@ model Session {
   userId String?
 }
 
+model Webhook {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String
+  events    String[]
+  url       String
+}
+
 model Token {
   id          String    @id @default(uuid())
   createdAt   DateTime  @default(now())
