@@ -1,6 +1,4 @@
 import { resolver } from "blitz"
-import db from "db"
-import { Role } from "types"
 import * as z from "zod"
 import { Email } from "../domain/valueObjects/userEmail"
 import { usersRepository } from "../infra/usersRepository"
