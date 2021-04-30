@@ -1,3 +1,4 @@
+import { HookableEvent } from "app/contract"
 import { resolver } from "blitz"
 import * as z from "zod"
 import { webhooksRepository } from "../infra/webhooksRepository"
@@ -10,6 +11,9 @@ const CreateWebhookSchema = z.object({
 })
 
 export default resolver.pipe(resolver.zod(CreateWebhookSchema), async (input) => {
-  const webhook = await webhooksRepository.createWebhook({ ...input })
+  const webhook = await webhooksRepository.createWebhook({
+    ...input,
+    events: input.events as HookableEvent[],
+  })
   return webhook
 })
