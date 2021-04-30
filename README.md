@@ -29,7 +29,7 @@ This is a Software as a Service starter kit. Made with [Blitz](https://github.co
   - [ ] Browser / in-app
 - [ ] Admin Panel
 - [ ] Announcements
-- [ ] Webhook calling on data events
+- [x] Webhook calling on data events
 - [ ] Extended generators using [Plop](https://plopjs.com) (probably will be changed to Blitz templates when it comes out)
 
 ---
