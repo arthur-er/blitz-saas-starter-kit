@@ -5,3 +5,19 @@ import { webhooksRepository } from "app/modules/webhooks/infra/webhooksRepositor
 
 export const Events = new Emittery<EventsList>()
 
+const registerWebhookEvents = async () => {
+  const webhooks = await webhooksRepository.getWebhooks()
+  webhooks.forEach((webhook) => {
+    Events.on(webhook.events, ({ url, data }) => {
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+    })
+  })
+}
+
+registerWebhookEvents()
