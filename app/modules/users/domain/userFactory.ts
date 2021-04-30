@@ -6,7 +6,7 @@ import { UserEntity } from "./userEntity"
 import { Email } from "app/modules/users/domain/valueObjects/userEmail"
 import { MembershipFactory, MembershipValue } from "app/modules/membership/domain/membershipFactory"
 
-export type UserValue = User & {
+export type UserValue = Omit<User, "createdAt" | "updatedAt" | "hashedPassword"> & {
   memberships?: MembershipValue[]
 }
 
