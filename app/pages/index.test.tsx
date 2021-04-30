@@ -20,7 +20,16 @@ test("renders blitz documentation link", () => {
     id: uuid.v4(),
     name: "User",
     email: "user@email.com",
-    role: "user",
+    memberships: [
+      {
+        role: "USER",
+        organization: {
+          id: uuid.v4(),
+          name: "Org",
+          role: "CUSTOMER",
+        },
+      },
+    ],
   })
 
   const { getByText } = render(<Home />)
