@@ -8,8 +8,8 @@ export const Events = new Emittery<EventsList>()
 const registerWebhookEvents = async () => {
   const webhooks = await webhooksRepository.getWebhooks()
   webhooks.forEach((webhook) => {
-    Events.on(webhook.events, ({ url, data }) => {
-      fetch(url, {
+    Events.on(webhook.events, ({ data }) => {
+      fetch(webhook.url.value, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
