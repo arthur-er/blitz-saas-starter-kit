@@ -28,6 +28,8 @@
     "@hookform/resolvers": "2.4.0",
     "@prisma/client": "~2.20",
     "blitz": "0.34.3",
+    "emittery": "arthur-er/emittery",
+    "isomorphic-unfetch": "3.1.0",
     "prisma": "~2.20",
     "react": "0.0.0-experimental-6a589ad71",
     "react-dom": "0.0.0-experimental-6a589ad71",
