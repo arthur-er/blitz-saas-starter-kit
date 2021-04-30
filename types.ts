@@ -8,7 +8,8 @@ declare module "blitz" {
     isAuthorized: SimpleRolesIsAuthorized<MembershipRole>
     PublicData: {
       userId: User["id"]
-      roles: Array<MembershipRole & GlobalRole>
+      orgId: Organization["id"]
+      roles: [MembershipRole, GlobalRole]
     }
   }
 }
