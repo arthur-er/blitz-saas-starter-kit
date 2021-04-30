@@ -1,6 +1,6 @@
 import { SecurePassword } from "@blitzjs/core/server"
 import { Id } from "app/core/domain/valueObjects/id"
-import db from "db"
+import db, { User } from "db"
 import { UserFactory } from "../domain/userFactory"
 import { Email } from "../domain/valueObjects/userEmail"
 
@@ -41,6 +41,13 @@ export const usersRepository = {
           },
         },
       },
+      include: {
+        memberships: {
+          include: {
+            organization: true,
+          },
+        },
+      },
     })
 
     const userEntity = UserFactory.fromRaw(user)
@@ -61,6 +68,13 @@ export const usersRepository = {
           },
         },
       },
+      include: {
+        memberships: {
+          include: {
+            organization: true,
+          },
+        },
+      },
     })
 
     const userEntity = UserFactory.fromRaw(user)
@@ -69,11 +83,19 @@ export const usersRepository = {
   },
 
   async getUserByEmail({ email }: GetUserByEmailInput) {
-    const user = await db.user.findFirst({ where: { email: email.value } })
+    const user = await db.user.findFirst({
+      where: { email: email.value },
+      include: {
+        memberships: {
+          include: {
+            organization: true,
+          },
+        },
+      },
+    })
     if (!user) {
       return
     }
-
     const userEntity = UserFactory.fromRaw(user)
 
     return userEntity
