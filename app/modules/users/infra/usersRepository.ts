@@ -23,6 +23,10 @@ interface GetUserByEmailInput {
 }
 
 export const usersRepository = {
+  async getUserById(id: Id) {
+    const user = await db.user.findFirst({ where: { id: id.value } })
+    return user
+  },
   async createUser(input: CreateUserInput) {
     const user = await db.user.create({
       data: {
