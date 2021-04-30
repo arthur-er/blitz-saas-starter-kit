@@ -41,9 +41,9 @@ This is a Software as a Service starter kit. Made with [Blitz](https://github.co
 Before you begin, you will need to have the following tools installed on your machine:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), [Yarn](https://yarnpkg.com/), [Docker](https://www.docker.com) and [Docker Compose](https://docs.docker.com/compose/)
 
-### Installatio
+### Installation
 
-First you will need to clone the repository:
+First, you will need to clone the repository:
 
 ```bash
 $ git clone https://github.com/arthur-er/blitz-sass.git project_name
