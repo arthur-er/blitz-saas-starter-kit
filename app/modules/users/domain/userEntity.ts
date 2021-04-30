@@ -6,7 +6,7 @@ export interface IUserEntity {
   id: Id
   name: string
   email: Email
-  hashedPassword: string
+  hashedPassword?: string
   memberships?: MembershipEntity[]
 }
 
@@ -15,7 +15,7 @@ export class UserEntity implements IUserEntity {
   name: string
   email: Email
   memberships?: MembershipEntity[]
-  hashedPassword: string
+  hashedPassword?: string
 
   constructor(props: IUserEntity) {
     this.id = new Id(props.id.value)

@@ -6,7 +6,7 @@ import { UserEntity } from "./userEntity"
 import { Email } from "app/modules/users/domain/valueObjects/userEmail"
 import { MembershipFactory, MembershipValue } from "app/modules/membership/domain/membershipFactory"
 
-export type UserValue = Omit<User, "createdAt" | "updatedAt" | "hashedPassword"> & {
+export type UserValue = Omit<User, "createdAt" | "updatedAt"> & {
   memberships?: MembershipValue[]
 }
 
@@ -18,6 +18,7 @@ export class UserFactory {
       id: new Id(id),
       name,
       email: new Email(email),
+      hashedPassword: values.hashedPassword ? values.hashedPassword : undefined,
       memberships: memberships
         ? memberships.map((membership) => MembershipFactory.fromRaw(membership))
         : undefined,
