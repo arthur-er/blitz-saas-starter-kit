@@ -8,7 +8,7 @@ import {
   useQueryErrorResetBoundary,
 } from "blitz"
 import { ErrorBoundary } from "react-error-boundary"
-import LoginForm from "app/auth/components/LoginForm"
+import LoginForm from "app/modules/auth/components/LoginForm"
 
 export default function App({ Component, pageProps }: AppProps) {
   const getLayout = Component.getLayout || ((page) => page)
