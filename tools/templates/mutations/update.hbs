@@ -1,0 +1,21 @@
+import { NotFoundError, resolver } from "blitz"
+import { Id } from "app/core/domain/valueObjects/id"
+import * as z from "zod"
+import { {{plural name}}Repository } from "../infra/{{plural name}}Repository"
+
+const {{name}}UpdateSchema = z.object({
+  id: z.string().uuid()
+})
+
+export default resolver.pipe(
+  resolver.zod({{name}}UpdateSchema),
+  resolver.authorize(),
+  async ({ id, ...data }, ctx) => {
+    const {{name}}Id = new Id(id)
+    const {{name}} = await {{plural name}}Repository.get{{titleCase name}}({{name}}Id)
+    if (!{{name}}) throw new NotFoundError()
+
+    await {{plural name}}Repository.update{{titleCase name}}({ {{name}}.id.value, data })
+    return true
+  }
+)

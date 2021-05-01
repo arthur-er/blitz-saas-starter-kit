@@ -1,0 +1,21 @@
+import { Id } from "app/core/domain/valueObjects/id"
+import {IOrgEntity, OrgEntity} from "app/modules/orgs/domain/orgEntity"
+
+export interface I{{titleCase name}}Entity {
+  id: Id
+  organizationId: Id
+  organization?: IOrgEntity
+}
+
+export class {{titleCase name}}Entity implements I{{titleCase name}}Entity {
+  id: Id
+  organizationId: Id
+  organization?: IOrgEntity
+
+  constructor(props: I{{titleCase name}}Entity) {
+    this.id = new Id(props.id.value)
+    this.organizationId = new Id(props.organizationId.value)
+    this.organization = props.organization ? new OrgEntity(props.organization) : undefined
+    Object.freeze(this)
+  }
+}
