@@ -15,7 +15,7 @@ export default resolver.pipe(
     const {{name}} = await {{plural name}}Repository.get{{titleCase name}}({{name}}Id)
     if (!{{name}}) throw new NotFoundError()
 
-    await {{plural name}}Repository.update{{titleCase name}}({ {{name}}.id.value, data })
+    await {{plural name}}Repository.update{{titleCase name}}({ id: {{name}}.id.value, data })
     return true
   }
 )
