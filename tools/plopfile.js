@@ -48,6 +48,7 @@ module.exports = function (plop) {
         path: "../app/modules/{{plural name}}/queries/find{{sentenceCase name}}ById.ts",
         templateFile: "./templates/queries/getOne.hbs",
       },
+      "Now add the model to the db/schema.prisma file",
     ],
   })
 }

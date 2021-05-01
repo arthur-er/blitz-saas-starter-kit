@@ -1,6 +1,6 @@
 import { {{plural name}}Repository } from "../infra/{{plural name}}Repository"
 
-const get{{plural name}} async (input) => {
+const get{{titleCase (plural name)}} = async (input) => {
   const {{name}} = await {{plural name}}Repository.get{{titleCase (plural name)}}()
 
   return {{name}}
