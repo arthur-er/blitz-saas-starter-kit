@@ -1,0 +1,23 @@
+import { {{titleCase name}} } from "db"
+
+import { Id } from "app/core/domain/valueObjects/id"
+import { OrgValue, OrgFactory } from "app/modules/orgs/domain/orgFactory"
+import { {{titleCase name}}Entity } from "./{{name}}Entity"
+
+export type {{titleCase name}}Value = Omit<{{titleCase name}}, "createdAt" | "updatedAt"> & {
+  organization?: OrgValue
+}
+
+export class {{titleCase name}}Factory {
+  static fromRaw(values: {{titleCase name}}Value): {{titleCase name}}Entity {
+    const { id, organizationId, organization } = values
+
+    return new {{titleCase name}}Entity({
+      id: new Id(id),
+      organizationId:  new Id(organizationId),
+      organization: organization
+        ? OrgFactory.fromRaw(organization)
+        : undefined,
+    })
+  }
+}

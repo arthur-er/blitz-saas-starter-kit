@@ -1,0 +1,7 @@
+import { {{plural name}}Repository } from "../infra/{{plural name}}Repository"
+
+export default async (input) => {
+  const {{name}} = await {{plural name}}Repository.get{{titleCase (plural name)}}()
+
+  return {{name}}
+}

@@ -1,0 +1,42 @@
+import { Id } from "app/core/domain/valueObjects/id"
+import db, { {{titleCase name}} } from "db"
+import { {{titleCase name}}Factory } from "../domain/{{name}}Factory"
+
+interface Create{{titleCase name}}Input {
+  data: {{titleCase name}}
+}
+
+interface Update{{titleCase name}}Input {
+  id: Id
+  data: Partial<{{titleCase name}}>
+}
+
+export const {{plural name}}Repository = {
+  async create{{titleCase name}}(data: Create{{titleCase name}}Input) {
+    const {{name}} = await db.{{name}}.create({
+      data
+    })
+    return {{name}}
+  },
+  // TODO: add pagination
+  async get{{titleCase (plural name)}}() {
+    const {{plural name}} = await db.{{name}}.findMany({})
+    const {{name}}Entities = {{name}}s.map(({{name}}) => {{titleCase name}}Factory.fromRaw({{name}}))
+    return {{name}}Entities
+  },
+  async get{{titleCase name}}(id: Id) {
+    const {{name}} = await db.{{name}}.findFirst({ where: { id: id.value } })
+    return {{name}}
+  },
+  async update{{titleCase name}}({ id, data }: Update{{titleCase name}}Input) {
+    const {{name}} = await db.{{name}}.update({
+      where: { id: id.value },
+      data,
+    })
+    return {{name}}
+  },
+  async delete{{titleCase name}}(id: Id) {
+    const {{name}} = await db.{{name}}.delete({ where: { id: id.value } })
+    return {{name}}
+  },
+}
