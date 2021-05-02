@@ -70,6 +70,15 @@ model Webhook {
   url       String
 }
 
+model Announcement {
+  id          String   @id @default(uuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  name        String
+  description String
+  content     String
+}
+
 model Token {
   id          String    @id @default(uuid())
   createdAt   DateTime  @default(now())
