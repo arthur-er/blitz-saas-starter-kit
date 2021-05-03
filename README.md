@@ -5,6 +5,7 @@
 <p align="center">
  <a href="#introduction">Introduction</a> •
  <a href="#features">Features</a> •
+ <a href="#how-the-project-works">How it works?</a> •
  <a href="#running-the-project">How to run it</a> •
  <a href="#author">Author</a> •
  <a href="#user-content-license">License</a>
@@ -31,6 +32,26 @@ This is a Software as a Service starter kit. Made with [Blitz](https://github.co
 - [ ] Announcements
 - [x] Webhook calling on data events
 - [x] Extended generators using [Plop](https://plopjs.com) (probably will be changed to Blitz templates when it comes out)
+
+---
+
+## How the project works?
+
+### Folder structure
+
+The folder structure is very similar to a normal blitz app, except for the app folder structure
+
+```bash
+app
+├── api # For the api routes
+├── contract # For types
+├── core # For shared logic that isn't specific to a module
+├── modules # For domain modules
+├── pages # For the app pages
+├── services # For modules that don't have a  model
+└── start # To files that will be loaded only once on the app boot
+
+```
 
 ---
 

@@ -11,11 +11,5 @@ export default resolver.pipe(resolver.zod(CreateUserSchema), async (input) => {
   const email = new Email(input.email)
   const user = await usersRepository.getUserByEmail({ email })
 
-  /* await ctx.session.$create({
-    userId: user.id.value,
-    orgId: user.memberships![0].organizationId.value,
-    roles: [user.memberships![0].role.value!, user.memberships![0].organization.role.value!],
-  }) */
-
   return user
 })
